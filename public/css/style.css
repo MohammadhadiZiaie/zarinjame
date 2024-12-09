@@ -119,7 +119,7 @@
 
  */
 :root {
-  --theme-deafult: #1c5e01;
+  --theme-deafult: #747474;
   --theme-secondary: #f73164;
   --light-background: rgba(242, 243, 247, 0.7);
   --body-font-color: #2F2F3B;
@@ -39471,6 +39471,7 @@ html[dir=rtl] .page-wrapper.compact-wrapper .page-body-wrapper .sidebar-wrapper 
 html[dir=rtl] .page-wrapper.compact-wrapper .page-body-wrapper .sidebar-wrapper .toggle-sidebar {
   right: unset;
   left: 30px;
+  margin-top:20px;
 }
 html[dir=rtl] .page-wrapper.compact-wrapper .page-body-wrapper .sidebar-wrapper .sidebar-main .sidebar-links {
   padding: 0;
@@ -42790,7 +42791,6 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
     width: 67%;
   }
 }
-
 .img-center{
   display: block;
   margin-left: auto;
@@ -42801,6 +42801,12 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
 .whiteclr{
   color:white !important;
 }
+.img-dashboardd{
+  height: 250px;
+  padding-top: 35px;
+  padding-left: 78px !important;
+}
 /**=====================
   5.9 Box-layout CSS Ends
 ==========================**/
+

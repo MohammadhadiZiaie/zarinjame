@@ -49,13 +49,6 @@
       }
     });
   }
-// مخفی کردن فرم ورود و نمایش فرم کد یکبار مصرف
-document.getElementById('otp-button').addEventListener('click', function() {
-  // مخفی کردن فرم ورود
-  document.getElementById('login-form').style.display = 'none';
-  // نمایش فرم OTP
-  document.getElementById('otp-login').style.display = 'block';
-});
 
   /*----------------------------------------
      password show hide

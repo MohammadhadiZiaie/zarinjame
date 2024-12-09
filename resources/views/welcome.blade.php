@@ -10,7 +10,6 @@
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <title>به زودی - سیستم کنترل تولید زرین جامه</title>
-    <!-- فونت Vazirmatn -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
       html, body {
@@ -28,7 +27,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
   </head>
   <body>
-    <!-- دکمه بالا به صفحه -->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- صفحه اصلی -->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
@@ -61,35 +59,31 @@
     <script src="{{ asset('js/script.js') }}"></script>
 
     <script>
-      // محاسبه زمان باقی‌مانده برای 3 روز از حال حاضر
       var targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 3); // اضافه کردن 3 روز به تاریخ کنونی
+      targetDate.setDate(targetDate.getDate() + 3); // 
 
-      // کد برای شمارش معکوس
       function updateCountdown() {
         var now = new Date();
         var remainingTime = targetDate - now;
 
-        // محاسبه روزها، ساعت‌ها، دقیقه‌ها و ثانیه‌ها
         var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
         var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-        // بروزرسانی شمارنده در صفحه
         document.querySelector('.days').textContent = days;
         document.querySelector('.hours').textContent = hours;
         document.querySelector('.minutes').textContent = minutes;
         document.querySelector('.seconds').textContent = seconds;
 
-        // اگر زمان به اتمام رسید
+        
         if (remainingTime < 0) {
           clearInterval(countdownInterval);
           document.querySelector('#clock-arrival').innerHTML = "<h2>صفحه در دسترس است!</h2>";
         }
       }
 
-      // بروزرسانی شمارنده هر ثانیه
+    
       var countdownInterval = setInterval(updateCountdown, 1000);
     </script>
   </body>

@@ -10,7 +10,6 @@
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <title>ورود - سیستم کنترل تولید زرین جامه</title>
-    <!-- فونت -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
       html, body {
@@ -42,7 +41,6 @@
         <div class="col-xl-7 p-0">
           <div class="login-card login-dark">
             <div class="login-main">
-              <!-- فرم ورود اصلی -->
               <form id="login-form" class="theme-form">
                 <h4>وارد حساب کاربری شوید</h4>
                 <div class="form-group" style="margin-top:25px;">
@@ -68,7 +66,7 @@
                 </div>
               </form>
 
-              <!-- فرم ورود با کد یکبار مصرف (پنهان در ابتدا) -->
+              <!-- فرم ورود با کد یکبار مصرف  -->
               <form id="otp-login" class="theme-form" style="display:none;">
                 <h4>ورود با کد یکبار مصرف</h4>
                 <div class="form-group" style="margin-top:25px;">
