@@ -66,6 +66,7 @@
                 <p class="mb-0">{{ Auth::user()->role }} <i class="middle fa fa-angle-down"></i></p>
               </div>
             </div>
+            
             <ul class="profile-dropdown onhover-show-div">
               <li><a href="user-profile.html"><i data-feather="user"></i><span>حساب </span></a></li>
               <li><a href="letter-box.html"><i data-feather="mail"></i><span>صندوق ورودی</span></a></li>
