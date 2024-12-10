@@ -49,10 +49,14 @@ class User extends Authenticatable
 
 public function hasAccessToMenu($permission)
 {
-    // اگر permissions null باشد، آن را به یک آرایه خالی تبدیل کن
-    $permissions = json_decode($this->permissions, true) ?? [];
+    foreach ($this->roles as $role) {
+        $permissions = json_decode($role->permissions, true);
 
-    return in_array($permission, $permissions);
+        if (is_array($permissions) && isset($permissions[$permission]) && $permissions[$permission] === true) {
+            return true;
+        }
+    }
+    return false;
 }
 
     
