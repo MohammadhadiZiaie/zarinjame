@@ -41,17 +41,18 @@
         <div class="col-xl-7 p-0">
           <div class="login-card login-dark">
             <div class="login-main">
-              <form id="login-form" class="theme-form">
+              <form id="login-form" method="POST" action="{{ route('login') }}" class="theme-form">
+              @csrf
                 <h4>وارد حساب کاربری شوید</h4>
                 <div class="form-group" style="margin-top:25px;">
                   <label class="col-form-label">آدرس ایمیل</label>
-                  <input class="form-control" type="email" placeholder="Test@gmail.com">
+                  <input class="form-control" name="email" type="email" placeholder="Test@gmail.com">
                 </div>
                 <div class="form-group">
                   <label class="col-form-label">پسورد</label>
                   <div class="form-input position-relative">
-                    <input class="form-control" dir="ltr" type="password" placeholder="*********">
-                    <div class="show-hide"><span class="show"> </span></div>
+                    <input class="form-control" dir="LTR" name="password" type="password" placeholder="*********">
+                    <div class="show-hide" ><span class="show"> </span></div>
                   </div>
                 </div>
                 <div class="form-group mb-0">
@@ -59,6 +60,13 @@
                     <input id="checkbox1" type="checkbox">
                     <label class="text-muted" for="checkbox1">گذرواژه را به خاطر بسپارید</label>
                   </div>
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                    @endforeach
+                   </div>
+                    @endif
                   <div class="text-end mt-3" style="margin-top:25px;">
                     <button class="btn btn-primary btn-block w-100" type="submit" style="margin-top:10px;">ورود به سیستم</button>
                     <button id="otp-button" class="btn btn-primary btn-block w-100" type="button" style="margin-top:10px;">ورود به کد یکبار مصرف</button>

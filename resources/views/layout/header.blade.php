@@ -62,17 +62,22 @@
           </li>
           <li class="profile-nav onhover-dropdown pe-0 py-0">
             <div class="media profile-media"><img style="height:50px" class="b-r-10" src="{{ asset('assets/icon/man.png') }}" alt="">
-              <div class="media-body"><span>ایمی والتر</span>
-                <p class="mb-0">ادمین <i class="middle fa fa-angle-down"></i></p>
+              <div class="media-body"><span>{{ Auth::user()->name }}</span>
+                <p class="mb-0">{{ Auth::user()->role }} <i class="middle fa fa-angle-down"></i></p>
               </div>
             </div>
             <ul class="profile-dropdown onhover-show-div">
               <li><a href="user-profile.html"><i data-feather="user"></i><span>حساب </span></a></li>
               <li><a href="letter-box.html"><i data-feather="mail"></i><span>صندوق ورودی</span></a></li>
               <li><a href="kanban.html"><i data-feather="file-text"></i><span>بورد کارها</span></a></li>
-              <li><a href="#"><i data-feather="settings"></i><span>تنظیمات</span></a></li>
-              <li><a href="login_one.html"><i data-feather="log-in"> </i><span>ورود به سیستم</span></a></li>
-            </ul>
+              <li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i data-feather="log-in"></i><span>خروج</span>
+            </a>
+        </li>              </ul>
           </li>
         </ul>
       </div>

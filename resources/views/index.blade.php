@@ -13,7 +13,9 @@
         <div class="page-title">
           <div class="row">
             <div class="col-6" style="margin-top:25px">
-              <h4>آقای ضیایی عزیز...! خوش آمدید</h4>
+              <h4>          {{ session('message') }}
+
+              </h4>
             </div>
             
           </div>
