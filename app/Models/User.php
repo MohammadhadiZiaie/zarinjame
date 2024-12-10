@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+{
+    return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
+}
+
+public function hasAccessToMenu($permission)
+{
+    // اگر permissions null باشد، آن را به یک آرایه خالی تبدیل کن
+    $permissions = json_decode($this->permissions, true) ?? [];
+
+    return in_array($permission, $permissions);
+}
+
+    
 }

@@ -444,9 +444,7 @@
                         <div class="user-icon success">
                           <div class="user-box"><i class="font-success" data-feather="user-minus"></i></div>
                         </div>
-                        <div>
-                          <h5 class="mb-1">178,098</h5><span class="font-danger d-flex align-items-center"><i class="icon-arrow-down icon-rotate me-1"></i><span class="f-w-500">-08.89</span></span>
-                        </div>
+                       
                       </li>
                     </ul>
                   </div>

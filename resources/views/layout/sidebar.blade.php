@@ -19,6 +19,7 @@
                   <h6>پین شده</h6>
                 </div>
               </li>
+              @if(auth()->user()->hasAccessToMenu('view_dashboard'))
               <li class="sidebar-main-title">
                 ّ
               </li>
@@ -107,8 +108,21 @@
                   <li><a href="quilleditor.html">تنظیمات سیستم</a></li>
                   <li><a href="quilleditor.html">تنظیمات دسترسی‌ها</a></li>
                 </ul>
+              </li> 
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="server"></i>
+                  <span >مدیریت مالی </span></a></span></a>
               </li>
 
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="user"></i>
+                  <span >مدیریت انسانی </span></a></span></a>
+              </li>
+             
+@endif
 
 
             </ul>
