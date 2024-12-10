@@ -23,15 +23,13 @@
                 ّ
               </li>
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
-               <a class="sidebar-link sidebar-title" href="#">
+                 <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="home"></i>
                <span >پیشخوان </span></a>
               </li>
 
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
-               <a class="sidebar-link sidebar-title" href="#">
+                  <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="shopping-bag"></i><span >مدیریت سفارش‌ها</span></a>
                   <ul class="sidebar-submenu">
                   <li><a href="quilleditor.html">ثبت سفارش جدید </a></li>
@@ -40,7 +38,6 @@
               </li>
 
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
                <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="box"></i>
                <span >مدیریت تولید</span></a>
@@ -52,7 +49,6 @@
 
               
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
                <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="inbox"></i>
                               <span >مدیریت انبار</span></a>
@@ -62,8 +58,26 @@
                 </ul>
               </li>
 
+
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="feather"></i>
+                 <span >وظایف </span></a></span></a>
+              </li>
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="database"></i>
+                   <span >فرآیند تولید</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">فرآیند برش</a></li>
+                  <li><a href="quilleditor.html">فرآیند دوخت</a></li>
+                  <li><a href="quilleditor.html">تکمیل فرآیندآیند </a></li>
+
+                </ul>
+              </li>
+
+              <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="users"></i>
                               <span> مدیریت کاربران</span></a>
@@ -74,7 +88,6 @@
               </li>
 
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
                <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="archive"></i>
                  <span>گزارش‌ها</span></a>
@@ -87,16 +100,15 @@
               </li>
 
               <li class="sidebar-list">
-                <i class="fa fa-thumb-tack"></i>
                <a class="sidebar-link sidebar-title" href="#">        
                  <i data-feather="settings"></i>
                   <span >تنظیمات </span></a></span></a>
                   <ul class="sidebar-submenu">
                   <li><a href="quilleditor.html">تنظیمات سیستم</a></li>
                   <li><a href="quilleditor.html">تنظیمات دسترسی‌ها</a></li>
-
                 </ul>
               </li>
+
 
 
             </ul>
