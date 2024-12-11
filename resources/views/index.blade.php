@@ -60,7 +60,7 @@
                     <div class="badge f-10 p-0" id="txt"></div>
                   </div>
                 </div>
-                <div class="cartoon"><img class="img-dashboardd" src="{{ asset('images/exampleprodaction.png') }}" alt="vector women with leptop"></div>
+                <div class="cartoon"><img class="img-dashboardd" src="{{ asset('assets/images/exampleprodaction.png') }}" alt="vector women with leptop"></div>
               </div>
             </div>
           </div>
@@ -188,6 +188,8 @@
               </div>
             </div>
           </div>
+          @if(auth()->user()->hasAccessToMenu('view_excute_prodaction'))
+
           <div class="col-xxl-8 col-lg-12 box-col-12">
             <div class="card">
               <div class="card-header card-no-border">
@@ -274,6 +276,9 @@
               </div>
             </div>
           </div>
+          @endif
+          @if(auth()->user()->hasAccessToMenu('view_task'))
+
           <div class="col-xxl-4 col-xl-7 col-md-6 col-sm-5 box-col-6">
             <div class="card height-equal">
               <div class="card-header card-no-border">
@@ -312,6 +317,9 @@
               </div>
             </div>
           </div>
+          @endif
+          @if(auth()->user()->hasAccessToMenu('view_human_resource'))
+
           <div class="col-xxl-4 col-xl-5 col-md-6 col-sm-7 notification box-col-6">
             <div class="card height-equal">
               <div class="card-header card-no-border">
@@ -355,6 +363,9 @@
               </div>
             </div>
           </div>
+          @endif
+          @if(auth()->user()->hasAccessToMenu('view_setting'))
+
           <div class="col-xxl-4 col-md-6 appointment-sec box-col-6">
             <div class="appointment">
               <div class="card">
@@ -415,8 +426,9 @@
               </div>
             </div>
           </div>
-          
-          
+          @endif
+          @if(auth()->user()->hasAccessToMenu('view_funancial'))
+
           <div class="col-xxl-4 col-md-6 box-col-6 col-ed-6">
             <div class="row">
               <div class="col-xl-12">
@@ -453,6 +465,8 @@
               
             </div>
           </div>
+
+          @endif
           <div class="col-xxl-5 col-lg-8 col-md-11 box-col-8 col-ed-6">
             
           </div>
@@ -465,5 +479,27 @@
 
 
 
+
+@endsection
+
+@section('customJs')
+
+<script src="{{ asset('assets/js/clock.js') }}"></script>
+<script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+<script src="{{ asset('assets/js/header-slick.js') }}"></script>
+<script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+<script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+<script src="{{ asset('assets/js/chart/apex-chart/moment.min.js') }}"></script>
+<script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
+<script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
+<script src="{{ asset('assets/js/notify/index.js') }}"></script>
+<script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
+<script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
+<script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
+<script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
+<script src="{{ asset('assets/js/height-equal.js') }}"></script>
+<script src="{{ asset('assets/js/animation/wow/wow.min.js') }}"></script>
 
 @endsection

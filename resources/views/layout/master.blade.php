@@ -17,13 +17,15 @@
       }
   </style>
   <!-- CSS فایل‌ها -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/themify.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/icofont.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/themify.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/flag-icon.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/feather-icon.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
+
+  @yield('customCSS')
 </head>
 <body onload="startTime()">
   <!-- loader starts-->
@@ -53,45 +55,35 @@
 
       <!-- Page Sidebar Ends-->
       @yield('DashboardIndex')
+      @yield('adduser')
+      @yield('listuser')
+
       <!-- footer start-->
       @include('layout.footer')
     </div>
   </div>
   <!-- latest jquery-->
-  <script src="{{ asset('js/jquery.min.js') }}"></script>
-  <!-- Bootstrap js-->
-  <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-  <!-- feather icon js-->
-  <script src="{{ asset('js/icons/feather-icon/feather.min.js') }}"></script>
-  <script src="{{ asset('js/icons/feather-icon/feather-icon.js') }}"></script>
-  <!-- scrollbar js-->
-  <script src="{{ asset('js/scrollbar/simplebar.js') }}"></script>
-  <script src="{{ asset('js/scrollbar/custom.js') }}"></script>
-  <!-- Sidebar jquery-->
-  <script src="{{ asset('js/config.js') }}"></script>
-  <!-- Plugins JS start-->
-  <script src="{{ asset('js/sidebar-menu.js') }}"></script>
-  <script src="{{ asset('js/sidebar-pin.js') }}"></script>
-  <script src="{{ asset('js/clock.js') }}"></script>
-  <script src="{{ asset('js/slick/slick.min.js') }}"></script>
-  <script src="{{ asset('js/slick/slick.js') }}"></script>
-  <script src="{{ asset('js/header-slick.js') }}"></script>
-  <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script>
-  <script src="{{ asset('js/chart/apex-chart/stock-prices.js') }}"></script>
-  <script src="{{ asset('js/chart/apex-chart/moment.min.js') }}"></script>
-  <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
-  <script src="{{ asset('js/dashboard/default.js') }}"></script>
-  <script src="{{ asset('js/notify/index.js') }}"></script>
-  <script src="{{ asset('js/typeahead/handlebars.js') }}"></script>
-  <script src="{{ asset('js/typeahead/typeahead.bundle.js') }}"></script>
-  <script src="{{ asset('js/typeahead/typeahead.custom.js') }}"></script>
-  <script src="{{ asset('js/typeahead-search/handlebars.js') }}"></script>
-  <script src="{{ asset('js/typeahead-search/typeahead-custom.js') }}"></script>
-  <script src="{{ asset('js/height-equal.js') }}"></script>
-  <script src="{{ asset('js/animation/wow/wow.min.js') }}"></script>
-  <!-- Plugins JS Ends-->
+  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<!-- Bootstrap js-->
+<script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<!-- feather icon js-->
+<script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+<script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+<!-- scrollbar js-->
+<script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
+<script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
+<!-- Sidebar jquery-->
+<script src="{{ asset('assets/js/config.js') }}"></script>
+<script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+<script src="{{ asset('assets/js/sidebar-pin.js') }}"></script>
+<!-- Plugins JS start-->
+
+<!-- Plugins JS Ends-->
+
   <!-- Theme js-->
-  <script src="{{ asset('js/script.js') }}"></script>
+  @yield('customJs')
+
+  <script src="{{ asset('assets/js/script.js') }}"></script>
   <script>new WOW().init();</script>
 </body>
 </html>

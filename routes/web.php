@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+
 
 
 /*
@@ -24,8 +26,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('role:admin');
-    Route::get('/manager', [ManagerController::class, 'index'])->middleware('role:manager');
-    Route::get('/operator', [OperatorController::class, 'index'])->middleware('role:operator');
+    Route::post('/add-users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/create', [UserController::class, 'addUser'])->name('users.addUser');
+    Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+    
 });
 

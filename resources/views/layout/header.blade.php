@@ -12,12 +12,12 @@
         </div>
       </form>
       <div class="header-logo-wrapper col-auto p-0">
-        <div class="logo-wrapper"><a href="dashboard-01.html"><img class="img-fluid" src="{{ asset('images/logo/Zarinjame-logo-black.png') }}" alt="Logo"></a></div>
+        <div class="logo-wrapper"><a href="dashboard-01.html"><img class="img-fluid" src="{{ asset('assets/images/logo/Zarinjame-logo-black.png') }}" alt="Logo"></a></div>
         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
       </div>
       <div class="left-header col-xxl-5 col-xl-6 col-lg-5 col-md-4 col-sm-3 p-0">
         <div class="notification-slider">
-          <div class="d-flex h-100"> <img src="{{ asset('gif/giftools.gif') }}" alt="gif">
+          <div class="d-flex h-100"> <img src="{{ asset('assets/gif/giftools.gif') }}" alt="gif">
             <h6 class="mb-0 f-w-400"><span class="font-primary">
             زرین جامه </span><span class="f-light">کیفیت در تولید، دقت در مدیریت</span></h6>
           </div>

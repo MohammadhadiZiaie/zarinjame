@@ -3,17 +3,17 @@
 <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
       <div>
         <div class="logo-wrapper"><a href="">
-            <img style="height:70px !important;" class="img-fluid for-light" src="{{ asset('images/logo/Minimal-logo.png') }}" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt=""></a>
+            <img style="height:70px !important;" class="img-fluid for-light" src="{{ asset('assets/images/logo/Minimal-logo.png') }}" alt=""><img class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png" alt=""></a>
           <div class="back-btn"><i class="fa fa-angle-left"></i></div>
           <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div>
         </div>
         <div  class="logo-icon-wrapper"><a href="">
-            <img style="height:70px !important;" class="img-fluid" src="{{ asset('images/logo/Minimal-logo.png') }}" alt=""></a></div>
+            <img style="height:70px !important;" class="img-fluid" src="{{ asset('assets/images/logo/Minimal-logo.png') }}" alt=""></a></div>
         <nav class="sidebar-main">
           <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
           <div id="sidebar-menu">
             <ul class="sidebar-links" id="simple-bar">         
-                <li class="back-btn"><a href=""><img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt=" "></a>
+                <li class="back-btn"><a href=""><img class="img-fluid" src="/assets/images/logo/logo-icon.png" alt=" "></a>
               <div class="mobile-back text-end"><span>برگشت</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
              </li>
               <li class="pin-title sidebar-main-title">
@@ -21,65 +21,155 @@
                   <h6>پین شده</h6>
                 </div>
               </li>
-              @php
-    $menus = [
-        'view_dashboard' => ['icon' => 'home', 'name' => 'پیشخوان'],
-        'manage_orders' => [
-            'icon' => 'shopping-bag', 'name' => 'مدیریت سفارش‌ها',
-            'submenu' => ['ثبت سفارش جدید', 'لیست سفارشات']
-        ],
-        'manage_sewing' => [
-            'icon' => 'box', 'name' => 'مدیریت تولید',
-            'submenu' => ['ایجاد دستور تولید', 'لیست تولیدات']
-        ],
-        'manage_inventory' => [
-            'icon' => 'inbox', 'name' => 'مدیریت انبار',
-            'submenu' => ['انبار مواد اولیه', 'انبار محصولات نهایی']
-        ],
-        'tasks' => ['icon' => 'feather', 'name' => 'وظایف'],
-        'production_process' => [
-            'icon' => 'database', 'name' => 'فرآیند تولید',
-            'submenu' => ['فرآیند برش', 'فرآیند دوخت', 'تکمیل فرآیند']
-        ],
-        'user_management' => [
-            'icon' => 'users', 'name' => 'مدیریت کاربران',
-            'submenu' => ['افزودن کاربر', 'لیست کاربران']
-        ],
-        'view_reports' => [
-            'icon' => 'archive', 'name' => 'گزارش‌ها',
-            'submenu' => ['گزارش‌ گیری تولید', 'گزارش‌ گیری سفارش‌ها', 'گزارش‌ گیری موجودی انبار']
-        ],
-        'settings' => [
-            'icon' => 'settings', 'name' => 'تنظیمات',
-            'submenu' => ['تنظیمات سیستم', 'تنظیمات دسترسی‌ها']
-        ],
-        'finance_management' => ['icon' => 'server', 'name' => 'مدیریت مالی'],
-        'human_resources' => ['icon' => 'user', 'name' => 'مدیریت انسانی'],
-    ];
-@endphp
+    
 
               <li class="sidebar-main-title" style="color:black !important">
               منو و دسترسی ها 
               </li>
+              
+
+              <li class="sidebar-main-title">
+              
+              </li>
+              <li class="sidebar-list">
+                 <a class="sidebar-link sidebar-title" href="/dashboard">
+               <i data-feather="home"></i>
+               <span >پیشخوان </span></a>
+              </li>
+            
+              
+              @if(auth()->user()->hasAccessToMenu('view_orders'))
+
+              <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="shopping-bag"></i><span >مدیریت سفارش‌ها</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">ثبت سفارش جدید </a></li>
+                  <li><a href="quilleditor.html">لیست سفارشات </a></li>
+                </ul>
+              </li>
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_excute_prodaction'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="box"></i>
+               <span >مدیریت تولید</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">ایجاد دستور تولید </a></li>
+                  <li><a href="quilleditor.html">لیست تولیدات </a></li>
+                </ul>
+              </li>
+             
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_storge'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="inbox"></i>
+                              <span >مدیریت انبار</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">انبار مواد اولیه  </a></li>
+                  <li><a href="quilleditor.html">انبار محصولات نهایی  </a></li>
+                </ul>
+              </li>
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_task'))
 
 
-              @foreach($menus as $permission => $menu)
-        @if(auth()->user()->hasAccessToMenu($permission))
-            <li class="sidebar-list">
-                <a class="sidebar-link sidebar-title" href="#">
-                    <i data-feather="{{ $menu['icon'] }}"></i>
-                    <span>{{ $menu['name'] }}</span>
-                </a>
-                @if(!empty($menu['submenu']))
-                    <ul class="sidebar-submenu">
-                        @foreach($menu['submenu'] as $submenu)
-                            <li><a href="#">{{ $submenu }}</a></li>
-                        @endforeach
-                    </ul>
-                @endif
-            </li>
-        @endif
-    @endforeach
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="feather"></i>
+                 <span >وظایف </span></a></span></a>
+              </li>
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_prodaction'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="database"></i>
+                   <span >فرآیند تولید</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">فرآیند برش</a></li>
+                  <li><a href="quilleditor.html">فرآیند دوخت</a></li>
+                  <li><a href="quilleditor.html">تکمیل فرآیندآیند </a></li>
+
+                </ul>
+              </li>
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_users'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="users"></i>
+                              <span> مدیریت کاربران</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="/users/create">افزودن کاربر </a></li>
+                  <li><a href="/users/list">لیست کاربران</a></li>
+                </ul>
+              </li> 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_report'))
+
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="archive"></i>
+                 <span>گزارش‌ها</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">گزارش‌ گیری تولید</a></li>
+                  <li><a href="quilleditor.html">گزارش‌ گیری سفارش‌ها</a></li>
+                  <li><a href="quilleditor.html">گزارش‌ گیری موجودی انبار
+                  </a></li>
+                </ul>
+              </li>
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_setting'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+                 <i data-feather="settings"></i>
+                  <span >تنظیمات </span></a></span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="quilleditor.html">تنظیمات سیستم</a></li>
+                  <li><a href="quilleditor.html">تنظیمات دسترسی‌ها</a></li>
+                </ul>
+              </li> 
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_funancial'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="server"></i>
+                  <span >مدیریت مالی </span></a></span></a>
+              </li>
+ 
+              @endif
+
+              @if(auth()->user()->hasAccessToMenu('view_human_resource'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">        
+               <i data-feather="user"></i>
+                  <span >مدیریت انسانی </span></a></span></a>
+              </li>
+              @endif
+
+
+
         
              
 
