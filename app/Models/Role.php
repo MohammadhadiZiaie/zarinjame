@@ -13,5 +13,11 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class, 'user_roles', 'role_id', 'user_id');
     }
+    public function hasAccessToMenu($permission)
+{
+    $permissions = json_decode($this->permissions, true);
+    return isset($permissions[$permission]) && $permissions[$permission] === true;
+}
+
     
 }

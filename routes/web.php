@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/add', [OrderController::class, 'add'])->name('orders.list');
 
     Route::get('/setting/access', [SettingController::class, 'access'])->name('settings.access');
+    Route::get('/getRolesForUserType', [SettingController::class, 'getRolesForUserType']);
 
     
 });
