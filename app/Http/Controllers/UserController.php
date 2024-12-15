@@ -72,15 +72,16 @@ class UserController extends Controller
 
 
             ]);
+          
+            
+        
+            // اضافه کردن نقش به جدول user_roles
+            $user->roles()->attach($validatedData['role_id']);
             $user->roles()->updateExistingPivot($validatedData['role_id'], [
                 'sub_role' => $request->sub_role,
                 'updated_at' => now(), // برای بروزرسانی زمان
                 'created_at' => now(), // اگر می‌خواهید زمان ایجاد را نیز ذخیره کنید
             ]);
-            
-        
-            // اضافه کردن نقش به جدول user_roles
-            $user->roles()->attach($validatedData['role_id']);
             
             // ثبت زیرنقش‌ها در جدول user_roles
             if ($request->filled('sub_role')) {
@@ -91,7 +92,5 @@ class UserController extends Controller
         }
         
 
-
-    
 
 }

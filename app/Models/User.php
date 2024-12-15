@@ -48,18 +48,17 @@ class User extends Authenticatable
 {
     return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
 }
-
 public function hasAccessToMenu($permission)
 {
     foreach ($this->roles as $role) {
         $permissions = json_decode($role->permissions, true);
-
-        if (is_array($permissions) && isset($permissions[$permission]) && $permissions[$permission] === true) {
+        if (in_array($permission, $permissions)) {
             return true;
         }
     }
     return false;
 }
+
 
     
 }

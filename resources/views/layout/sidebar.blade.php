@@ -37,8 +37,7 @@
                <span >پیشخوان </span></a>
               </li>
             
-              
-              @if(auth()->user()->hasAccessToMenu('view_orders'))
+              @if(auth()->user()->hasAccessToMenu('delete'))
 
               <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" href="#">
@@ -50,7 +49,7 @@
               </li>
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_excute_prodaction'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'create'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -64,7 +63,8 @@
              
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_storge'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'read'))
+
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -78,7 +78,9 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_task'))
+              
+              @if(auth()->user()->hasAccessToMenu(permission: 'update'))
+
 
 
               <li class="sidebar-list">
@@ -89,7 +91,7 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_prodaction'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'read'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -105,7 +107,7 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_users'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'users'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -118,7 +120,7 @@
               </li> 
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_users'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'customer'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -133,7 +135,8 @@
               @endif
 
 
-              @if(auth()->user()->hasAccessToMenu('view_report'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'reports'))
+
 
 
               <li class="sidebar-list">
@@ -150,7 +153,7 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_setting'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'settings'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">        
@@ -163,7 +166,7 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu('view_funancial'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'funancial'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">        
@@ -172,8 +175,8 @@
               </li>
  
               @endif
+              @if(auth()->user()->hasAccessToMenu(permission: 'humanresource'))
 
-              @if(auth()->user()->hasAccessToMenu('view_human_resource'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">        
