@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('name')->unique(); 
             $table->text('description')->nullable(); 
             $table->enum('status', ['active', 'inactive'])->default('active'); 
+            $table->unsignedBigInteger('parent_role_id')->nullable(); // شناسه نقش والد (در صورتی که زیرنقش باشد)
             $table->json('permissions')->nullable(); 
+            $table->text('sub_roles');
             $table->timestamps();
         });
     }

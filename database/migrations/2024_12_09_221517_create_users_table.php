@@ -18,11 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', allowed: ['admin', 'operator', 'manager']); 
-            $table->string('department')->nullable(); 
-            $table->timestamp('last_login_at')->nullable(); 
+            $table->unsignedBigInteger('role_id')->nullable()->default(1); 
+            $table->string('department')->nullable();
+            $table->timestamp('last_login_at')->nullable();
             $table->timestamps();
+        
+            // ارتباط با جدول roles
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
+        
     }
 
     /**

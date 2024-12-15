@@ -26,7 +26,7 @@
                             <table class="display" id="basic-1">
                                 <thead>
                                     <tr>
-                                    <th></th>
+                                        <th>شناسه</th>
                                         <th>نام و نام خانوادگی</th>
                                         <th>ایمیل</th>
                                         <th>شماره تماس</th>
@@ -39,12 +39,13 @@
                                 <tbody>
                                     @foreach($customers as $customer)
                                     <tr>
-                                    <td>{{ $customer->id }}</td>
+                                        <td>{{ $customer->id }}</td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->phone }}</td>
                                         <td>{{ $customer->codemeli }}</td>
                                         <td>{{ $customer->address }}</td>
+                                        
                                         <td>{{ $customer->created_at }}</td>
                                         <td>
                                             <ul class="action">

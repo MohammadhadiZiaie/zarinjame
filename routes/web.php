@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/setting/access', [SettingController::class, 'access'])->name('settings.access');
     Route::get('/getRolesForUserType', [SettingController::class, 'getRolesForUserType']);
+    Route::get('/getSubRoles', [UserController::class, 'getSubRoles']);
+
 
     
 });
