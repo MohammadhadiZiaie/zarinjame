@@ -17,14 +17,14 @@
       }
     </style>
     <!-- فایل‌های CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/themify.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/color-1.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/icofont.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/themify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/flag-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/feather-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
   </head>
   <body>
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
@@ -34,7 +34,7 @@
       <div class="container-fluid p-0 m-0">
         <div class="comingsoon comingsoon-bgimg">
           <div class="comingsoon-inner text-center ">
-            <img src="{{ asset('images/logo/Zarinjame-logo-white.png') }}" alt="لوگو">
+            <img src="{{ asset('assets/images/logo/Zarinjame-logo-white.png') }}" alt="لوگو">
             <h5 class="whiteclr">ما به زودی در دسترس خواهیم بود ...!</h5>
             <div class="countdown " id="clock-arrival">
               <ul>
@@ -50,13 +50,13 @@
     </div>
 
     <!-- فایل‌های JS -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('js/icons/feather-icon/feather-icon.js') }}"></script>
-    <script src="{{ asset('js/config.js') }}"></script>
-    <script src="{{ asset('js/countdown.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+    <script src="{{ asset('assets/js/config.js') }}"></script>
+    <script src="{{ asset('assets/js/countdown.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <script>
       var targetDate = new Date();

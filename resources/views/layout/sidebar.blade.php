@@ -44,7 +44,7 @@
                   <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="shopping-bag"></i><span >مدیریت سفارش‌ها</span></a>
                   <ul class="sidebar-submenu">
-                  <li><a href="quilleditor.html">ثبت سفارش جدید </a></li>
+                  <li><a href="/orders/add">ثبت سفارش جدید </a></li>
                   <li><a href="quilleditor.html">لیست سفارشات </a></li>
                 </ul>
               </li>
@@ -118,6 +118,21 @@
               </li> 
               @endif
 
+              @if(auth()->user()->hasAccessToMenu('view_users'))
+
+              <li class="sidebar-list">
+               <a class="sidebar-link sidebar-title" href="#">
+               <i data-feather="users"></i>
+                              <span> مدیریت مشتریان</span></a>
+                  <ul class="sidebar-submenu">
+                  <li><a href="/customers/create">افزودن مشتری </a></li>
+                  <li><a href="/customers/list">لیست مشتریان</a></li>
+                  <li><a href="">تنظیم قرداد مشتری</a></li>
+                </ul>
+              </li> 
+              @endif
+
+
               @if(auth()->user()->hasAccessToMenu('view_report'))
 
 
@@ -142,8 +157,7 @@
                  <i data-feather="settings"></i>
                   <span >تنظیمات </span></a></span></a>
                   <ul class="sidebar-submenu">
-                  <li><a href="quilleditor.html">تنظیمات سیستم</a></li>
-                  <li><a href="quilleditor.html">تنظیمات دسترسی‌ها</a></li>
+                <li><a href="/setting/access">تنظیمات دسترسی‌ها</a>   </li>
                 </ul>
               </li> 
  

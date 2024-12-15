@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('titlePage')
-<title>پنل مدیریت زرین جامه | لیست کاربر </title>
+<title>پنل مدیریت زرین جامه | لیست مشتریان </title>
 @endsection
 
 @section('customCSS')
@@ -11,14 +11,14 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
 @endsection
 
-@section('listuser')
+@section('listcustomer')
 <div class="page-body">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0 card-no-border">
-                        <h4>لیست کاربر </h4>
+                        <h4>لیست مشتریان </h4>
                         <span>امکان جستجو و فیلتر دارد</span>
                     </div>
                     <div class="card-body">
@@ -26,42 +26,26 @@
                             <table class="display" id="basic-1">
                                 <thead>
                                     <tr>
-                                    <th> </th>
-
+                                    <th></th>
                                         <th>نام و نام خانوادگی</th>
                                         <th>ایمیل</th>
-                                        <th>نوع کاربر</th>
-                                        <th>نقش کاربر</th>
+                                        <th>شماره تماس</th>
+                                        <th>کدملی</th>
+                                        <th>آدرس</th>
+                                        <th>تاریخ ایجاد</th>
                                         <th>عملیات</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                    @foreach($customers as $customer)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>
-    @switch($user->role)
-        @case('operator')
-            اپراتور
-            @break
-        @case('admin')
-            ادمین
-            @break
-        @case('manager')
-            مدیر سیستم
-            @break
-        @default
-            نوع نامشخص
-    @endswitch
-</td>
-                                       
-                                        <td>
-                                            @foreach($user->roles as $role)
-                                                <span class="badge badge-primary">{{ $role->name }}</span>
-                                            @endforeach
-                                        </td>
+                                    <td>{{ $customer->id }}</td>
+                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->email }}</td>
+                                        <td>{{ $customer->phone }}</td>
+                                        <td>{{ $customer->codemeli }}</td>
+                                        <td>{{ $customer->address }}</td>
+                                        <td>{{ $customer->created_at }}</td>
                                         <td>
                                             <ul class="action">
                                                 <li class="edit"><a href="#"><i class="icon-pencil-alt"></i></a></li>

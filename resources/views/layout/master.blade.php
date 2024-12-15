@@ -23,6 +23,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/flag-icon.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/feather-icon.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
   @yield('customCSS')
@@ -55,8 +56,12 @@
 
       <!-- Page Sidebar Ends-->
       @yield('DashboardIndex')
+      @yield('access')
       @yield('adduser')
       @yield('listuser')
+      @yield('addorder')
+      @yield('addcustomer')
+      @yield('listcustomer')
 
       <!-- footer start-->
       @include('layout.footer')

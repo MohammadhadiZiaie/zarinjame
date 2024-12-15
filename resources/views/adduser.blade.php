@@ -24,7 +24,8 @@
                     <div class="card-body custom-input">
                       <div class="row">
                         <div class="col">
-                          <div class="mb-3 row">
+                          
+                        <div class="mb-3 row">
                             <label class="col-sm-2">نام و نام خانوادگی</label>
                             <div class="col-sm-10">
                               <input class="form-control" name="name" type="text" placeholder="نام و نام خانوادگی">
@@ -78,19 +79,19 @@
                     </div>
                     <div class="card-footer text-end">
                     @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+                      <div class="alert alert-success">
+                         {{ session('success') }}
+                               </div>
+                              @endif
                     @if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        </div>
-@endif
+                     <div class="alert alert-danger">
+                         <ul>
+                       @foreach ($errors->all() as $error)
+                       <li>{{ $error }}</li>
+                         @endforeach
+                        </ul>
+                       </div>
+                @endif
                       <div class="col-sm-9 offset-sm-3">
                         <button class="btn btn-primary me-3" type="submit">افزودن</button>
                       </div>
