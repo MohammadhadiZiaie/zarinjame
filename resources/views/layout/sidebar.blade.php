@@ -160,7 +160,7 @@
                  <i data-feather="settings"></i>
                   <span >تنظیمات </span></a></span></a>
                   <ul class="sidebar-submenu">
-                <li><a href="/setting/access">تنظیمات دسترسی‌ها</a>   </li>
+                <li><a href="/permissions">تنظیمات دسترسی‌ها</a>   </li>
                 </ul>
               </li> 
  

@@ -6,8 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PermissionController;
 
 
 
@@ -41,11 +40,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/orders/add', [OrderController::class, 'add'])->name('orders.list');
 
-    Route::get('/setting/access', [SettingController::class, 'access'])->name('settings.access');
-    Route::get('/getRolesForUserType', [SettingController::class, 'getRolesForUserType']);
+
+    Route::get('/permissions', [PermissionController::class, 'showForm'])->name('permissions.form');
+    Route::get('/permissions/sub-roles', [PermissionController::class, 'getSubRoles'])->name('permissions.sub_roles');
+    Route::get('/permissions/access-options', [PermissionController::class, 'getAccessOptions'])->name('permissions.access_options');
+    Route::post('/permissions/save', [PermissionController::class, 'savePermissions'])->name('permissions.save');
+
+
     Route::get('/getSubRoles', [UserController::class, 'getSubRoles']);
 
-    Route::get('/sidebar', [UserController::class, 'sidebarAccess']);
 
 
 

@@ -64,6 +64,8 @@
               </div>
             </div>
           </div>
+          @if(auth()->user()->hasAccessToMenu('delete'))
+
           <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-6">
             <div class="row">
               <div class="col-xl-12">
@@ -188,7 +190,8 @@
               </div>
             </div>
           </div>
-          @if(auth()->user()->hasAccessToMenu('view_excute_prodaction'))
+          @endif
+          @if(auth()->user()->hasAccessToMenu('update'))
 
           <div class="col-xxl-8 col-lg-12 box-col-12">
             <div class="card">
@@ -277,7 +280,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('view_task'))
+          @if(auth()->user()->hasAccessToMenu('users'))
 
           <div class="col-xxl-4 col-xl-7 col-md-6 col-sm-5 box-col-6">
             <div class="card height-equal">
@@ -318,7 +321,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('view_human_resource'))
+          @if(auth()->user()->hasAccessToMenu('settings'))
 
           <div class="col-xxl-4 col-xl-5 col-md-6 col-sm-7 notification box-col-6">
             <div class="card height-equal">
@@ -364,7 +367,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('view_setting'))
+          @if(auth()->user()->hasAccessToMenu('humanresource'))
 
           <div class="col-xxl-4 col-md-6 appointment-sec box-col-6">
             <div class="appointment">
@@ -427,7 +430,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('view_funancial'))
+          @if(auth()->user()->hasAccessToMenu('funancial'))
 
           <div class="col-xxl-4 col-md-6 box-col-6 col-ed-6">
             <div class="row">
