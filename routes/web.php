@@ -10,6 +10,7 @@ use App\Http\Controllers\PermissionController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,17 +34,29 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/create', [UserController::class, 'addUser'])->name('users.addUser');
     Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+    
 
     Route::post('/add-customers', [CustomerController::class, 'add'])->name('customers.add');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
     Route::get('/customers/list', [CustomerController::class, 'list'])->name('customers.list');
 
-    Route::get('/orders/add', [OrderController::class, 'add'])->name('orders.list');
+    
+    Route::get('/orders/step1', [OrderController::class, 'createStep1'])->name('orders.create.step1');
+    Route::post('/orders/step1', [OrderController::class, 'postStep1'])->name('orders.post.step1');
+    Route::get('/orders/step2', [OrderController::class, 'createStep2'])->name('orders.create.step2');
+    Route::post('/orders/step2', [OrderController::class, 'postStep2'])->name('orders.post.step2');
+    Route::get('/orders/step3', [OrderController::class, 'createStep3'])->name('orders.create.step3');
+    Route::post('/orders/step3', [OrderController::class, 'postStep3'])->name('orders.post.step3');
+    Route::get('/orders/step4', [OrderController::class, 'createStep4'])->name('orders.create.step4');
+    Route::post('/orders/step4', [OrderController::class, 'postStep4'])->name('orders.post.step4');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+
 
 
     Route::get('/permissions', [PermissionController::class, 'showForm'])->name('permissions.form');
-    Route::get('/permissions/sub-roles', [PermissionController::class, 'getSubRoles'])->name('permissions.sub_roles');
-    Route::get('/permissions/access-options', [PermissionController::class, 'getAccessOptions'])->name('permissions.access_options');
+    Route::get('/permissions/sub-roles', [PermissionController::class, 'getSubRoles'])->name('permissions.subRoles');
+    Route::get('/permissions/access-options', [PermissionController::class, 'getAccessOptions'])->name('permissions.accessOptions');
     Route::post('/permissions/save', [PermissionController::class, 'savePermissions'])->name('permissions.save');
 
 

@@ -37,19 +37,19 @@
                <span >پیشخوان </span></a>
               </li>
             
-              @if(auth()->user()->hasAccessToMenu('delete'))
+              @if(auth()->user()->hasAccessToMenu('orders'))
 
               <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" href="#">
                <i data-feather="shopping-bag"></i><span >مدیریت سفارش‌ها</span></a>
                   <ul class="sidebar-submenu">
-                  <li><a href="/orders/add">ثبت سفارش جدید </a></li>
-                  <li><a href="quilleditor.html">لیست سفارشات </a></li>
+                  <li><a href="/orders/step1">ثبت سفارش جدید </a></li>
+                  <li><a href="/orders">لیست سفارشات </a></li>
                 </ul>
               </li>
               @endif
 
-              @if(auth()->user()->hasAccessToMenu(permission: 'create'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'production'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">
@@ -63,7 +63,7 @@
              
               @endif
 
-              @if(auth()->user()->hasAccessToMenu(permission: 'read'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'storge'))
 
 
               <li class="sidebar-list">
@@ -79,7 +79,7 @@
               @endif
 
               
-              @if(auth()->user()->hasAccessToMenu(permission: 'update'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'tasks'))
 
 
 
@@ -91,7 +91,7 @@
  
               @endif
 
-              @if(auth()->user()->hasAccessToMenu(permission: 'read'))
+              @if(auth()->user()->hasAccessToMenu(permission: 'farayand'))
 
               <li class="sidebar-list">
                <a class="sidebar-link sidebar-title" href="#">

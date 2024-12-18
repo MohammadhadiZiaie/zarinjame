@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    // خواندن توکن CSRF و تنظیم آن در هدرهای AJAX
+    const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    });
+
     function switchStep(currentStep, nextStep) {
         // تغییر مرحله فعال
         $(`.step-content[data-step="${currentStep}"]`).removeClass('active');
@@ -9,7 +18,7 @@ $(document).ready(function () {
         $(`.steps-indicator .step[data-step="${nextStep}"]`).addClass('active');
     }
 
-    // مرحله 2: انتخاب زیر نقش
+    // مرحله ۲: انتخاب زیر نقش
     $('#toStep2').click(function () {
         const roleId = $('#userRoleSelect').val();
         if (!roleId) {
@@ -23,20 +32,20 @@ $(document).ready(function () {
                 $('#subRoleSelect').append(`<option value="${key}">${value}</option>`);
             });
             switchStep(1, 2);
+        }).fail(function(){
+            alert('خطایی در دریافت زیر نقش‌ها رخ داد.');
         });
     });
 
-    // مرحله 3: تنظیم دسترسی‌ها
+    // مرحله ۳: تنظیم دسترسی‌ها
     $('#toStep3').click(function () {
         const subRole = $('#subRoleSelect').val();
-        const roleId = $('#userRoleSelect').val();  // اضافه کردن roleId که قبلاً نادیده گرفته شده بود
+        const roleId = $('#userRoleSelect').val();
 
         if (!subRole) {
             alert('لطفاً زیر نقش را انتخاب کنید.');
             return;
         }
-
-        console.log('roleId:', roleId, 'subRole:', subRole);  // برای بررسی لاگ
 
         $.get('/permissions/access-options', { role_id: roleId, sub_role: subRole }, function (data) {
             if (data.error) {
@@ -45,24 +54,45 @@ $(document).ready(function () {
             }
 
             $('#accessOptions').empty(); // پاک کردن گزینه‌های قبلی
-            $.each(data, function (index, value) {
+
+            let mergedPermissions = data.mergedPermissions;
+            const allPermissions = data.allPermissions;
+
+            // اطمینان از اینکه mergedPermissions یک آرایه است
+            if (typeof mergedPermissions === 'string') {
+                try {
+                    mergedPermissions = JSON.parse(mergedPermissions);
+                } catch (e) {
+                    console.error('Error parsing mergedPermissions:', e);
+                    mergedPermissions = [];
+                }
+            }
+
+            // نمایش تمام دسترسی‌ها با تیک زدن دسترسی‌های موجود
+            $.each(allPermissions, function (key, label) {
+                const isChecked = mergedPermissions.includes(key) ? 'checked' : '';
                 $('#accessOptions').append(`
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="${value}" value="${value}">
-                        <label class="form-check-label" for="${value}">${value}</label>
+                        <input class="form-check-input" type="checkbox" id="permission_${key}" name="permissions[]" value="${key}" ${isChecked}>
+                        <label class="form-check-label" for="permission_${key}">
+                            ${label}
+                        </label>
                     </div>
                 `);
             });
+
             switchStep(2, 3);
+        }).fail(function(xhr){
+            alert(xhr.responseJSON.error || 'خطایی رخ داد.');
         });
     });
 
-    // برگشت به مرحله 1
+    // برگشت به مرحله ۱
     $('#backToStep1').click(function () {
         switchStep(2, 1);
     });
 
-    // برگشت به مرحله 2
+    // برگشت به مرحله ۲
     $('#backToStep2').click(function () {
         switchStep(3, 2);
     });
@@ -83,6 +113,9 @@ $(document).ready(function () {
             access: selectedAccess,
         }, function (response) {
             alert(response.message);
+            location.reload();
+        }).fail(function(xhr){
+            alert(xhr.responseJSON.error || 'خطایی رخ داد.');
         });
     });
 });

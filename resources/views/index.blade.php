@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-          @if(auth()->user()->hasAccessToMenu('delete'))
+          @if(auth()->user()->hasAccessToMenu('orders'))
 
           <div class="col-xxl-auto col-xl-3 col-sm-6 box-col-6">
             <div class="row">
@@ -191,7 +191,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('update'))
+          @if(auth()->user()->hasAccessToMenu('production'))
 
           <div class="col-xxl-8 col-lg-12 box-col-12">
             <div class="card">
@@ -280,7 +280,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('users'))
+          @if(auth()->user()->hasAccessToMenu('storge'))
 
           <div class="col-xxl-4 col-xl-7 col-md-6 col-sm-5 box-col-6">
             <div class="card height-equal">
@@ -321,7 +321,7 @@
             </div>
           </div>
           @endif
-          @if(auth()->user()->hasAccessToMenu('settings'))
+          @if(auth()->user()->hasAccessToMenu('tasks'))
 
           <div class="col-xxl-4 col-xl-5 col-md-6 col-sm-7 notification box-col-6">
             <div class="card height-equal">

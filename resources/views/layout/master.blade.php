@@ -7,6 +7,9 @@
   <meta name="description" content="سیستم مدیریت و کنترل فرآیند تولید پوشاک زرین جامه، ابزار پیشرفته برای مدیریت فرآیندهای تولید، انبار و گزارش‌گیری.">
   <meta name="keywords" content="سیستم مدیریت تولید، مدیریت فرآیند پوشاک، پنل مدیریت، زرین جامه، گزارش‌گیری، تولید پوشاک">
   <meta name="author" content="زرین جامه">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500&display=swap" rel="stylesheet">
+
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
   @yield('titlePage')
@@ -61,6 +64,7 @@
       @yield('listuser')
       @yield('addorder')
       @yield('addcustomer')
+      @yield('content')
       @yield('listcustomer')
 
       <!-- footer start-->

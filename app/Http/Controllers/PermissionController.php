@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
-use App\Models\UserRole;
 use Illuminate\Support\Facades\Log;
 
 class PermissionController extends Controller
@@ -15,7 +14,9 @@ class PermissionController extends Controller
             ->where('name', '!=', 'admin') // ادمین را فیلتر کنید
             ->get();
 
-        return view('permissions', compact('roles'));
+        $allPermissions = config('permissions'); // دریافت لیست مستر دسترسی‌ها به صورت کلید-مقدار
+
+        return view('permissions', compact('roles', 'allPermissions'));
     }
 
     public function getSubRoles(Request $request)
@@ -32,52 +33,67 @@ class PermissionController extends Controller
 
     public function getAccessOptions(Request $request)
     {
-        $roleId = $request->role_id;  // نوع کاربر
-        $subRole = $request->sub_role; // زیر نقش
-    
-        // پیدا کردن نوع کاربر (role)
-        $role = Role::find($roleId);
-        if (!$role) {
-            Log::error('Role not found', ['role_id' => $roleId]);  // گزارش خطا در لاگ
-            return response()->json(['error' => 'نقش پیدا نشد.'], 404);
+        $roleId = $request->role_id;       // نوع کاربر
+        $subRoleId = $request->sub_role;  // زیر نقش
+
+        try {
+            // پیدا کردن نوع کاربر (role)
+            $role = Role::find($roleId);
+            if (!$role) {
+                Log::error('Role not found', ['role_id' => $roleId]);
+                return response()->json(['error' => 'نقش پیدا نشد.'], 404);
+            }
+
+            // پیدا کردن زیر نقش
+            $subRole = Role::find($subRoleId);
+            if (!$subRole || $subRole->parent_role_id != $roleId) {
+                Log::error('Sub-role not valid', ['sub_role' => $subRoleId, 'role_id' => $roleId]);
+                return response()->json(['error' => 'زیر نقش معتبر نیست.'], 404);
+            }
+
+            // دسترسی‌های نقش اصلی
+            $rolePermissions = $role->permissions ?? [];
+
+            // دسترسی‌های زیر نقش
+            $subRolePermissions = $subRole->permissions ?? [];
+
+            // ترکیب دسترسی‌ها
+            $mergedPermissions = array_unique(array_merge($rolePermissions, $subRolePermissions));
+
+            // ارسال دسترسی‌های موجود و لیست مستر دسترسی‌ها به صورت کلید-مقدار
+            return response()->json([
+                'mergedPermissions' => array_values($mergedPermissions), // اطمینان از اینکه آرایه است
+                'allPermissions' => config('permissions'),
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error in getAccessOptions', ['error' => $e->getMessage()]);
+            return response()->json(['error' => 'خطای سرور رخ داده است.'], 500);
         }
-    
-        // پیدا کردن زیر نقش
-        $subRoleData = Role::find($subRole);
-        if (!$subRoleData || $subRoleData->parent_role_id != $roleId) {
-            Log::error('Sub-role not valid', ['sub_role' => $subRole, 'role_id' => $roleId]);  // گزارش خطا در لاگ
-            return response()->json(['error' => 'زیر نقش معتبر نیست.'], 404);
-        }
-    
-        // دسترسی‌های نوع کاربر
-        $permissions = json_decode($role->permissions, true);
-    
-        // دسترسی‌های زیر نقش
-        $subRolePermissions = UserRole::where('role_id', $roleId)
-                                        ->where('sub_role', $subRole)
-                                        ->pluck('permissions')
-                                        ->first();
-    
-        if ($subRolePermissions) {
-            $subRolePermissions = json_decode($subRolePermissions, true);
-            $permissions = array_merge($permissions, $subRolePermissions); // ادغام دسترسی‌های نوع کاربر و زیر نقش
-        }
-    
-        return response()->json($permissions); // بازگرداندن دسترسی‌ها
     }
-    
-    
-    
 
     public function savePermissions(Request $request)
     {
         $validated = $request->validate([
             'role_id' => 'required|exists:roles,id',
-            'sub_role' => 'required|string',
+            'sub_role' => 'required|exists:roles,id',
             'access' => 'required|array',
         ]);
 
-        // ذخیره دسترسی‌ها
-        return response()->json(['message' => 'دسترسی‌ها با موفقیت ذخیره شد.']);
+        try {
+            // پیدا کردن زیر نقش
+            $subRole = Role::find($validated['sub_role']);
+            if (!$subRole || $subRole->parent_role_id != $validated['role_id']) {
+                return response()->json(['error' => 'زیر نقش معتبر نیست.'], 404);
+            }
+
+            // جایگزین کردن دسترسی‌های زیر نقش با دسترسی‌های جدید
+            $subRole->permissions = array_unique($validated['access']);
+            $subRole->save();
+
+            return response()->json(['message' => 'دسترسی‌ها با موفقیت ذخیره شد.']);
+        } catch (\Exception $e) {
+            Log::error('Error in savePermissions', ['error' => $e->getMessage()]);
+            return response()->json(['error' => 'خطای سرور رخ داده است.'], 500);
+        }
     }
 }

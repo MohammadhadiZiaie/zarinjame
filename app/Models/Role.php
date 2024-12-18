@@ -8,8 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'description',
+        'status',
+        'parent_role_id',
+        'permissions',
+        'sub_roles',
+    ];
 
-    protected $fillable = ['name', 'permissions', 'sub_roles'];
+    protected $casts = [
+        'permissions' => 'array',
+        'sub_roles' => 'array',
+    ];
 
     // برای دسترسی به sub_roles
     public function getSubRolesAttribute($value)
@@ -31,8 +42,11 @@ public function userRoles()
 }
 
 
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_roles', 'role_id', 'user_id');
     }
+
+    
 }

@@ -51,14 +51,15 @@ class User extends Authenticatable
 public function hasAccessToMenu($permission)
 {
     foreach ($this->roles as $role) {
-        $permissions = json_decode($role->permissions, true);
-        if (in_array($permission, $permissions)) {
+        $permissions = $role->permissions; // بدون json_decode
+
+        if (is_array($permissions) && in_array($permission, $permissions)) {
             return true;
         }
     }
+
     return false;
 }
-
 
     
 }
