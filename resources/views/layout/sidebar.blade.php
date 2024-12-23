@@ -45,6 +45,8 @@
                   <ul class="sidebar-submenu">
                   <li><a href="/orders/step1">ثبت سفارش جدید </a></li>
                   <li><a href="/orders">لیست سفارشات </a></li>
+                  <li><a href="/contracts">تنظیم قرداد مشتری</a></li>
+
                 </ul>
               </li>
               @endif
@@ -129,7 +131,6 @@
                   <ul class="sidebar-submenu">
                   <li><a href="/customers/create">افزودن مشتری </a></li>
                   <li><a href="/customers/list">لیست مشتریان</a></li>
-                  <li><a href="">تنظیم قرداد مشتری</a></li>
                 </ul>
               </li> 
               @endif

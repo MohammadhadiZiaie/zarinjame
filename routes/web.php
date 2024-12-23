@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ContractController;
 
 
 
@@ -22,7 +23,8 @@ use App\Http\Controllers\PermissionController;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {
+    return view('welcome'); });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -34,13 +36,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/create', [UserController::class, 'addUser'])->name('users.addUser');
     Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
-    
+
 
     Route::post('/add-customers', [CustomerController::class, 'add'])->name('customers.add');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
     Route::get('/customers/list', [CustomerController::class, 'list'])->name('customers.list');
 
-    
+
     Route::get('/orders/step1', [OrderController::class, 'createStep1'])->name('orders.create.step1');
     Route::post('/orders/step1', [OrderController::class, 'postStep1'])->name('orders.post.step1');
     Route::get('/orders/step2', [OrderController::class, 'createStep2'])->name('orders.create.step2');
@@ -62,9 +64,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/getSubRoles', [UserController::class, 'getSubRoles']);
 
+    Route::get('/contract/{orderId}', [ContractController::class, 'generateContract'])->name('contract.generate');
+    Route::get('/contract/list-contract', [ContractController::class, 'ListcContract'])->name('contracts.ListcContract');
+    Route::get('/contracts', [ContractController::class, 'index'])->name('contracts.index');
+    Route::get('/contracts/create/{order_id}', [ContractController::class, 'create'])->name('contracts.create');
+    Route::post('/contracts/store/{order_id}', [ContractController::class, 'store'])->name('contracts.store');
+    Route::get('/contracts/download/{id}', [ContractController::class, 'download'])->name('contracts.download');
 
 
 
-    
+
+
 });
 

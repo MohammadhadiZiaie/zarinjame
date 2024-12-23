@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
+use App\Models\Contract;
 
 class Order extends Model
 {
@@ -61,7 +62,10 @@ public function process()
     return $this->belongsTo(Process::class, 'process_id');
 }
 
-
+public function contracts()
+{
+    return $this->hasOne(Contract::class);
+}
 
 
 

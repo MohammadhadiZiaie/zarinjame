@@ -9,6 +9,8 @@
   <meta name="author" content="زرین جامه">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4/dist/css/select2.min.css" rel="stylesheet" />
+
 
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">

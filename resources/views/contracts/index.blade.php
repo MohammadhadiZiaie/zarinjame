@@ -1,48 +1,11 @@
 @extends('layout.master')
 
 @section('titlePage')
-    <title>لیست سفارشات برای قرداد</title>
+<title>لیست سفارش‌ها و قراردادها</title>
 @endsection
 
-@section('customCSS')
-
-<link href="https://cdn.jsdelivr.net/npm/select2@4/dist/css/select2.min.css" rel="stylesheet" />
-
-<style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: #f8f9fa;
-            color: #23402E;
-        }
-        h2, h4 {
-            color: #23402E;
-        }
-        .step-indicator {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .step {
-            width: 30px;
-            height: 30px;
-            background: #ccc;
-            border-radius: 50%;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .step.active {
-            background: #23402E;
-        }
-        .progress-bar-custom {
-            background-color: #23402E !important;
-        }
-    </style>
-@endsection
 @section('content')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2/dist/js/select2.min.js"></script>
+
 <div class="page-body">
     <div class="container-fluid">
         <div class="row">
@@ -54,6 +17,12 @@
                 @if(session('success'))
                     <div class="alert alert-success mt-2">
                         {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger mt-2">
+                        {{ session('error') }}
                     </div>
                 @endif
 
@@ -70,6 +39,7 @@
                                 <th>تاریخ سفارش</th>
                                 <th>تعداد</th>
                                 <th>وضعیت</th>
+                                <th>وضعیت قرارداد</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
@@ -91,7 +61,29 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info btn-sm">جزئیات</a>
+                                    @if($order->status == 'completed')
+                                        <span class="badge bg-success">قرارداد تنظیم شده</span>
+                                    @else
+                                        <span class="badge bg-secondary">بدون قرارداد</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <!-- جزئیات سفارش همیشه -->
+                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info btn-sm mb-1">جزئیات سفارش</a><br>
+                                    
+                                    @if($order->status == 'completed')
+                                        <!-- وقتی قرارداد تنظیم شده (status=completed)، فقط دانلود قرارداد -->
+                                        @php
+                                            // پیدا کردن قرارداد مرتبط با این سفارش
+                                            $contract = \App\Models\Contract::where('order_id',$order->id)->first();
+                                        @endphp
+                                        @if($contract && $contract->status == 'generated')
+                                            <a href="{{ route('contracts.download', $contract->id) }}" class="btn btn-primary btn-sm">دانلود قرارداد</a>
+                                        @endif
+                                    @elseif($order->status == 'pending')
+                                        <!-- وقتی قرارداد تنظیم نشده (status=pending)، دکمه تنظیم قرارداد -->
+                                        <a href="{{ route('contracts.create', $order->id) }}" class="btn btn-warning btn-sm">تنظیم قرارداد</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
